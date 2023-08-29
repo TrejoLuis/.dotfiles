@@ -22,6 +22,9 @@ return require('packer').startup(function(use)
 		  local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 		  ts_update()
 	  end,
+    dependencies = {
+      'JoosepAlviste/nvim-ts-context-commentstring'
+    }
   }
 
  use 'mbbill/undotree'
@@ -56,11 +59,12 @@ return require('packer').startup(function(use)
     -- LSP Support
     {'neovim/nvim-lspconfig'},             -- Required
     {                                      -- Optional
-      'williamboman/mason.nvim',
-      run = function()
-        pcall(vim.cmd, 'MasonUpdate')
-      end,
-    },
+      'williamboman/mason.nvim'},
+    --   run = function()
+    --     pcall(vim.cmd, 'MasonUpdate')
+    --   end,
+    -- }
+    -- ,
     {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
     -- Autocompletion
@@ -101,9 +105,8 @@ return require('packer').startup(function(use)
     require("nvim-tree").setup {}
   end
 }
-  
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
+ use 'JoosepAlviste/nvim-ts-context-commentstring'
 
-  end)
+end)
 
 
